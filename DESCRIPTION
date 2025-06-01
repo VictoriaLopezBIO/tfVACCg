@@ -1,0 +1,17 @@
+Package: tfVACCg
+Title: Tabla de frecuencias para VACC con gráficos opcionales
+Version: 1.1.0
+Authors@R: 
+    person("María Victoria", "López", email = "mariavictorialopez@fca.unju.edu.ar", role = c("aut", "cre"))
+Description: El paquete tfVACCg permite generar tablas de frecuencias
+    para variables aleatorias  cuantitativas continuas, incluyendo frecuencias absolutas, 
+    relativas, acumuladas y marcas de clase, junto con gráficos opcionales 
+    como histogramas, ojivas y polígonos de frecuencias.
+License: GPL (>= 3)
+Encoding: UTF-8
+RoxygenNote: 7.3.2
+Imports: 
+    dplyr,
+    ggplot2
+
+
