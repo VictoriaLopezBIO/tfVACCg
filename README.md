@@ -26,6 +26,16 @@ library(devtools)
 install_github("VictoriaLopezBIO/tfVACCg")
 ```
 
+4.  Ingresar 1 (All) en la consola
+
+`Enter one or more numbers, or an empty line to skip updates: 1`
+
+5.  Cargar el paquete tfVACCg para hacer uso de la función vacc
+
+``` r
+library(tfVACCg)
+```
+
 # 🤓 **Uso básico**
 
 ``` r
