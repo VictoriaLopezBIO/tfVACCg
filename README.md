@@ -26,11 +26,11 @@ library(devtools)
 install_github("VictoriaLopezBIO/tfVACCg")
 ```
 
-4.  Ingresar 1 (All) en la consola
+4.  Ingresar 1 (All) en la consola (Solo en caso de que R se lo solicite)
 
 `Enter one or more numbers, or an empty line to skip updates: 1`
 
-5.  Cargar el paquete tfVACCg para hacer uso de la función vacc
+5.  Una vez instalado, cargar el paquete tfVACCg para hacer uso de la función vacc
 
 ``` r
 library(tfVACCg)
@@ -53,6 +53,6 @@ vacc(x = iris$Sepal.Length, hyp = TRUE)
 
 **María Victoria López**
 
-Facultad de Ciencias Agrarias – Universidad Nacional de Jujuy
+Cátedra de Bioestadística y Diseño Experimental – Facultad de Ciencias Agrarias – Universidad Nacional de Jujuy
 
 ✉️ [mariavictorialopez\@fca.unju.edu.ar](mailto:mariavictorialopez@fca.unju.edu.ar)

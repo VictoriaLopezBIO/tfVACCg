@@ -102,7 +102,7 @@ vacc <- function(x, histograma = FALSE, ojiva = FALSE, hyp = FALSE,
   graf_hyp = if (hyp) {
     ggplot(data.frame(valor = x), aes(x = valor)) +
       geom_histogram(breaks = limites, fill = color_relleno, color = color_borde) +
-      geom_freqpoly(breaks = limites, colour = color_linea, linewidth = 1) +
+      geom_freqpoly(breaks = limites, colour = color_linea, linewidth = 1.1) +
       labs(title = "Histograma y Polígono de Frecuencias",
            x = "Clases",
            y = "fi") +
