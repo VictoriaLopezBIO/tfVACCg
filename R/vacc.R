@@ -71,7 +71,7 @@ vacc <- function(x, histograma = FALSE, ojiva = FALSE, hyp = FALSE,
   tf = tabla %>%
     mutate(fr = round(fi / sum(fi), 2),
            Fi = cumsum(fi),
-           Fr = round(cumsum(fr), 2),
+           Fr = round(cumsum(prop.table(fr)), 2),
            MC = mc) %>%
     rename(Clases = limite) %>%
     select(Clases, MC, fi, fr, Fi, Fr)
