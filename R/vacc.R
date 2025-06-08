@@ -30,6 +30,7 @@
 #' @import dplyr
 #' @import ggplot2
 #'
+#' @version 1.1.1
 #' @export
 
 vacc <- function(x, histograma = FALSE, ojiva = FALSE, hyp = FALSE,
