@@ -1,6 +1,6 @@
 Package: tfVACCg
 Title: Tabla de frecuencias para VACC con gráficos opcionales
-Version: 1.1.0
+Version: 1.1.1
 Authors@R: 
     person("María Victoria", "López", email = "mariavictorialopez@fca.unju.edu.ar", role = c("aut", "cre"))
 Description: El paquete tfVACCg permite generar tablas de frecuencias
