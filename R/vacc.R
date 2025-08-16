@@ -49,8 +49,9 @@ vacc <- function(x, histograma = FALSE, ojiva = FALSE, hyp = FALSE,
   repeat {
     # Defino límites de las clases
     limites = round(seq(minx, maxx, length.out = k + 1), 2)
+    lim_trunc = floor(limites*100)/100
     # Discretizo la variable x
-    cortes = cut(x, breaks = limites, include.lowest = TRUE)
+    cortes = cut(x, breaks = lim_trunc, include.lowest = TRUE)
 
     tabla = data.frame(valor = x) %>%
       # Intervalos de clases
@@ -64,8 +65,8 @@ vacc <- function(x, histograma = FALSE, ojiva = FALSE, hyp = FALSE,
     if (k < 5) stop("No se pudo generar una tabla de frecuencias válida.")
   }
 
-  li = limites[-length(limites)]
-  ls = limites[-1]
+  li = lim_trunc[-length(lim_trunc)]
+  ls = lim_trunc[-1]
   mc = round((li + ls) / 2, 2)
 
   tf = tabla %>%
