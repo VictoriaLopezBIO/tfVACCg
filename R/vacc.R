@@ -49,9 +49,8 @@ vacc <- function(x, histograma = FALSE, ojiva = FALSE, hyp = FALSE,
   repeat {
     # Defino límites de las clases
     limites = seq(minx, maxx, length.out = k + 1)
-    lim_trunc = floor(limites*100)/100
     # Discretizo la variable x
-    cortes = cut(x, breaks = lim_trunc, include.lowest = TRUE)
+    cortes = cut(x, breaks = limites, include.lowest = TRUE)
 
     tabla = data.frame(valor = x) %>%
       # Intervalos de clases
@@ -65,17 +64,37 @@ vacc <- function(x, histograma = FALSE, ojiva = FALSE, hyp = FALSE,
     if (k < 5) stop("No se pudo generar una tabla de frecuencias válida.")
   }
 
-  li = lim_trunc[-length(lim_trunc)]
-  ls = lim_trunc[-1]
-  mc = round((li + ls) / 2, 2)
+  li = limites[-length(limites)]
+  ls = limites[-1]
+  mc = (li + ls) / 2
+  a = diff(limites)
 
   tf = tabla %>%
     mutate(fr = round(fi / sum(fi), 2),
            Fi = cumsum(fi),
            Fr = round(cumsum(prop.table(fr)), 2),
-           MC = mc) %>%
+           MC = round(mc,2)) %>%
     rename(Clases = limite) %>%
-    select(Clases, MC, fi, fr, Fi, Fr)
+    mutate(LI = round(li,2),
+           LS = round(ls,2)) %>%
+    select(LI, LS, MC, fi, fr, Fi, Fr)
+
+  amplitud = round(a[1],2)
+
+  media = sum(tf$MC*tf$fi)/sum(tf$fi)
+
+  percentil = function(p) {
+    pos = p * sum(tf$fi)
+    clase = which(tf$Fi > pos)[1]
+    LIc = tf$LI[clase]
+    Fi_ant = ifelse(clase == 1, 0, tf$Fi[clase - 1])
+    fclase = tf$fi[clase]
+    return(LIc + ((pos - Fi_ant) / fclase * a))
+  }
+
+  mediana = percentil(0.5)
+  q1 = percentil(0.25)
+  q3 = percentil(0.75)
 
   # Crea gráficos pero no los imprime si es FALSE
   graf_hist = if (histograma) {
@@ -113,6 +132,11 @@ vacc <- function(x, histograma = FALSE, ojiva = FALSE, hyp = FALSE,
 
   return(list(
     tf = tf,
+    amplitud = amplitud,
+    promedio_ponderado = round(media,2),
+    mediana = round(mediana[1],2),
+    q1 = round(q1[1],2),
+    q3 = round(q3[1],2),
     histograma = graf_hist,
     ojiva = graf_ojiva,
     hyp = graf_hyp
