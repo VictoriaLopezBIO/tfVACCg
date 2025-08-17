@@ -48,7 +48,7 @@ vacc <- function(x, histograma = FALSE, ojiva = FALSE, hyp = FALSE,
 
   repeat {
     # Defino límites de las clases
-    limites = round(seq(minx, maxx, length.out = k + 1), 2)
+    limites = seq(minx, maxx, length.out = k + 1)
     lim_trunc = floor(limites*100)/100
     # Discretizo la variable x
     cortes = cut(x, breaks = lim_trunc, include.lowest = TRUE)
